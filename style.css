@@ -1,0 +1,157 @@
+/* fonts */
+@font-face {
+  font-family: digital-font;
+  src: url(font/digital-font/digital-7.ttf);
+}
+
+@font-face {
+  font-family: windy-wood;
+  src: url(font/WindyWoodDemo-nEvO.ttf);
+}
+
+/* variables */
+:root {
+  --ox-blue: #0b132b;
+  --space-blue: #1c2541;
+  --indy-gray-blue: #3a506b;
+  --max-blue-green: #5bc0be;
+  --turq-blue-green: #6fffe9;
+  --claret: #840032;
+}
+
+/* bootstrap fixes */
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex-grow: 1;
+}
+
+/* temps  */
+/* * {
+  outline: 1px solid red;
+} */
+
+header {
+  height: 40px;
+  background-color: var(--ox-blue);
+}
+
+.game-space {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  height: 425px;
+  background-color: gray;
+}
+
+/* utilities */
+.btn-primary {
+  height: 50px;
+  width: 50px;
+  border-radius: 100%;
+  background-color: black;
+  transition-duration: 0.25s;
+  /* border: 3px solid black; */
+  border: none;
+}
+.btn-primary:hover {
+  background-color: var(--max-blue-green);
+  /* border-color: var(--indy-gray-blue); */
+}
+
+.area-button-left {
+  position: absolute;
+  top: 45%;
+  right: 97%;
+}
+
+.area-button-right {
+  position: absolute;
+  top: 45%;
+  left: 97%;
+}
+
+.area-button-left,
+.area-button-right {
+  background-color: black;
+}
+
+.area-square {
+  /* outline: 1px solid black; */
+  height: 4rem;
+  width: 4rem;
+  /* width: 12px; */
+}
+
+.mt-neg-3 {
+  margin-top: -6px;
+}
+
+.digital-font {
+  font-family: digital-font;
+  font-size: 48px;
+}
+
+/* specific */
+
+.life-meter-circle {
+  height: 50px;
+  width: 50px;
+  border-radius: 100%;
+  background-color: black;
+  /* background: linear-gradient(to left, var(--claret) 50%, black 50%); */
+  margin: 0;
+  /* padding-left: 1rem; */
+  /* font-size: 2rem; */
+}
+
+.life-progress {
+  height: 15px;
+  width: 25rem;
+  background-color: black;
+  /* background: linear-gradient(to left, white 25%, black 75%); */
+  margin-left: -3px;
+}
+
+.resize-img {
+  height: 2rem;
+}
+
+.resize-img2 {
+  height: 3rem;
+}
+
+.bg-color {
+  background-color: var(--ox-blue);
+  background-color: white;
+
+  /* change to rgb and then reduce alpha*/
+  /* if i am feeling super ambitious have the background color be associated withe the light */
+}
+
+.bg-image {
+  background-image: url(bg-forest.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 1;
+}
+
+.player-inputs {
+  background-color: var(--indy-gray-blue);
+}
+
+.inventory {
+  height: 250px;
+  border: 1px solid black;
+  background: lightgray;
+}
+
+.message-center {
+  height: 150px;
+  border: 1px solid black;
+  background-color: lightgray;
+}
