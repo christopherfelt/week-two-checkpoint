@@ -63,6 +63,19 @@ header {
   /* border-color: var(--indy-gray-blue); */
 }
 
+.btn-primary:focus {
+  background-color: black;
+  box-shadow: none;
+}
+
+.btn-primary:visited {
+  border: none;
+}
+
+.btn-primary:disabled {
+  background-color: var(--claret);
+}
+
 .area-button-left {
   position: absolute;
   top: 45%;
@@ -85,6 +98,10 @@ header {
   height: 4rem;
   width: 4rem;
   /* width: 12px; */
+}
+
+.clicks-left {
+  font-size: 10px;
 }
 
 .mt-neg-3 {
@@ -144,8 +161,12 @@ header {
   background-color: var(--indy-gray-blue);
 }
 
+.action-buttons-panel {
+  background-color: lightgray;
+}
+
 .inventory {
-  height: 250px;
+  height: 125px;
   border: 1px solid black;
   background: lightgray;
 }

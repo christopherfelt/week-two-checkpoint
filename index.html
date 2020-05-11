@@ -16,36 +16,37 @@
       <div class="bg-image">
         <!-- Exploration Area -->
         <div class="container-fluid">
-          <div class="row d-flex justify-content-center d-flex">
-            <div id="area-space" class="col-10 game-space align-self-center positon-relative">
+          <div class="row d-flex justify-content-center d-flex ">
+            <div id="area-space" class="col-10 game-space align-self-center positon-relative rounded">
               <button class="btn btn-secondary area-button-left">
                 <i class="fas fa-arrow-left"></i>
               </button>
               <button class="btn btn-secondary area-button-right">
                 <i class="fas fa-arrow-right"></i>
               </button>
-              <!-- <div class="black-outline">
+              <!-- <div class="area-square pl-3 pt-3">
                 <img
                   class="img-fluid resize-img"
-                  src="images/rabbit.svg"
+                  src="images/pond.svg"
                   alt=""
                 />
-              </div>
-              <div class="black-outline">
+                <p class="float-right clicks-left">23</p>
+              </div> -->
+              <!-- <div class="black-outline">
                 <img
                   class="img-fluid resize-img"
                   src="images/tree.svg"
                   alt=""
                 />
-              </div>
-              <div class="black-outline">
+              </div> -->
+              <!-- <div class="black-outline">
                 <img
                   class="img-fluid resize-img"
                   src="images/cave.svg"
                   alt=""
                 />
-              </div>
-              <div class="black-outline">
+              </div> -->
+              <!-- <div class="black-outline">
                 <img
                   class="img-fluid resize-img"
                   src="images/cabin.svg"
@@ -59,22 +60,22 @@
         </div>
         <!-- Player Inputs and Metrics -->
         <div class="container-fluid">
-          <div class="row d-flex justify-content-center">
+          <div class="row d-flex justify-content-center rounded">
             <!-- left panel -->
             <div class="col-md-4 col-sm-12 player-inputs pt-1">
               <div class="row">
                 <div class="col-7">
-                  <div class="message-center rounded">
-                    <p>Some text will appear here</p>
+                  <div id="message-screen" class="message-center rounded">
+                    
                   </div>
                 </div>
                 <div class="col-5 d-flex justify-content-center">
                   <div class="align-self-center">
                     <div class="text-center ">
-                      <h1 class="digital-font">12:00</h1>
+                      <h1 id="digital-clock" class="digital-font">23:00</h1>
                     </div>
                     <div class="text-center">
-                      <h1 class="digital-font"> 23 &#176 F</h1>
+                      <h1 class="digital-font"><span id="thermometer"></span>&#176 F</h1>
                     </div>
                   </div>
                 </div>
@@ -82,22 +83,22 @@
 
               <div class="d-flex justify-content-end pr-3 mt-2 mb-0">
                 <div class="d-inline mx-1">
-                  <div class="life-meter-circle text-center text-light pt-2">
+                  <div id="internal-temp-metric" class="life-meter-circle text-center text-light pt-2">
                     <i class="fas fa-thermometer-quarter fa-2x"></i>
                   </div>
                 </div>
-                <div class="d-inline mx-1">
-                  <div class="life-meter-circle text-center text-light pt-2">
+                <div  class="d-inline mx-1">
+                  <div id="rest-metric" class="life-meter-circle text-center text-light pt-2">
                     <i class="far fa-eye fa-2x"></i>
                   </div>
                 </div>
                 <div class="d-inline mx-1">
-                  <div class="life-meter-circle text-center text-light pt-2">
+                  <div id="hydration-metric" class="life-meter-circle text-center text-light pt-2">
                     <i class="fas fa-tint fa-2x"></i>
                   </div>
                 </div>
-                <div class="d-inline mx-1">
-                  <div class="life-meter-circle text-center pt-2">
+                <div  class="d-inline mx-1">
+                  <div id="calories-metric" class="life-meter-circle text-center pt-2">
                     <img
                       class="img-fluid resize-img"
                       src="images/stomach.svg"
@@ -118,62 +119,95 @@
               </div>
             </div>
             <!-- middle panel -->
-            <div class="col-md-2 col-sm-4 text-center player-inputs pt-1">
-              <h6 class="mb-1">Actions</h6>
-              <div class="d-flex justify-content-center">
-                <div class="w-50">
-                  <button class="btn btn-primary mb-1">
+            <div class="col-md-2 col-sm-4 text-center pt-1 player-inputs">
+              <h6 class="d-inline bg-dark text-light px-2 rounded">Actions</h6>
+              <div class="d-flex justify-content-center ">
+                <div class="w-50  py-1 action-buttons-panel rounded">
+                  <button class="btn btn-primary mb-1" onclick="eatFood()">
                     <i class="fas fa-utensils"></i>
                   </button>
-                  <button class="btn btn-primary mb-1">
+                  <button class="btn btn-primary mb-1" onclick="startFire()">
                     <i class="fas fa-fire"></i>
                   </button>
-                  <button class="btn btn-primary">
+                  <button class="btn btn-primary" onclick="rest()">
                     <i class="fas fa-bed"></i>
                   </button>
-                  <button class="btn btn-primary">
+                  <button class="btn btn-primary" onclick="drinkWater()">
                     <i class="fas fa-glass-whiskey"></i>
                   </button>
                 </div>
               </div>
-              <h6 class="mb-1">Upgrades</h6>
+              <h6 class="d-inline bg-dark text-light px-2 rounded">Upgrades</h6>
               <div class="d-flex justify-content-center">
-                <div class="w-50">
-                  <button class="btn btn-primary mb-1">
-                    <img class="" src="images/lockpick.svg" alt="" />
+                <div class="w-50 py-1 action-buttons-panel rounded">
+                  <button id="lockpick-button" class="btn btn-primary mb-1">
+                    <img id="lockpick-image" class="img-fluid" src="images/lock.svg" alt="" onclick="enableModifer('lockpick')"/>
                   </button>
-                  <button class="btn btn-primary mb-1">
-                    <img class="" src="images/saw.svg" alt="" />
+                  <button id="saw-button" class="btn btn-primary mb-1">
+                    <img id="saw-image" class="img-fluid" src="images/lock.svg" alt="" onclick="enableModifer('saw')" />
                   </button>
-                  <button class="btn btn-primary">
-                    <img class="img-fluid" src="images/animal.svg" alt="" />
+                  <button id="trap-button" class="btn btn-primary">
+                    <img id="trap-image" class="img-fluid" src="images/lock.svg" alt="" onclick="enableModifer('trap')"/>
                   </button>
-                  <button class="btn btn-primary">
-                    <img class="img-fluid" src="images/pot.svg" alt="" />
+                  <button id="pot-button" class="btn btn-primary">
+                    <img id="pot-image" class="img-fluid" src="images/lock.svg" alt="" onclick="enableModifer('pot')" />
                   </button>
                 </div>
               </div>
             </div>
             <!-- right-panel -->
             <div class="col-md-4 col-sm-12 player-inputs pt-1">
-              <div class="inventory d-flex justify-content-center align-items-center">
-                  <div class="d-inline text-center px-3">
+              <div class="inventory  text-center">
+                <h6 class="mb-0">Inventory</h6>
+                <div class="d-flex justify-content-center">
+                  <div class="d-inline text-center ">
+                    <p class="mb-0">Food</p>
                     <img class="img-fluid resize-img2" src="images/rabbit.svg" alt="">
-                    <p class="">23</p>
+                    <p id="food-inventory" class="mb-0"></p>
                   </div>
-                  <div class="d-inline text-center px-3">
+                  <div class="d-inline text-center">
+                    <p class="mb-0">Wood</p>
                     <img class="img-fluid resize-img2" src="images/tree.svg" alt="">
-                    <p class="">23</p>
+                    <p class="mb-0" id="wood-inventory"></p>
                   </div>
-                  <div class="d-inline text-center px-3">
+                  <div class="d-inline text-center">
+                    <p class="mb-0">Shelter</p>
                     <img class="img-fluid resize-img2" src="images/cave.svg" alt="">
-                    <p class="">23</p>
+                    <p class="mb-0" id="shelter-inventory"></p>
                   </div>
-                  <div class="d-inline text-center px-3">
+                  <div class="d-inline text-center">
+                    <p class="mb-0">Water</p>
                     <img class="img-fluid resize-img2" src="images/water.svg" alt="">
-                    <p class="">23</p>
+                    <p class="mb-0" id="water-inventory"></p>
                   </div>
+                </div> 
               </div>
+              <div class="inventory  text-center">
+                <h6 class="mb-0">Resource Collection Stats</h6>
+                <div class="d-flex justify-content-center">
+                  <div id="food-rank" class="d-inline text-center ">
+                    <p class="mb-0">Food</p>
+                    <img class="img-fluid resize-img2" src="images/rabbit.svg" alt="">
+                    <p id="food-clicks" class="mb-0">0</p>
+                  </div>
+                  <div id="wood-rank" class="d-inline text-center">
+                    <p class="mb-0">Wood</p>
+                    <img class="img-fluid resize-img2" src="images/tree.svg" alt="">
+                    <p class="mb-0" id="wood-clicks">0</p>
+                  </div>
+                  <div id="shelter-rank" class="d-inline text-center">
+                    <p class="mb-0">Shelter</p>
+                    <img class="img-fluid resize-img2" src="images/cave.svg" alt="">
+                    <p class="mb-0" id="shelter-clicks">0</p>
+                  </div>
+                  <div id="water-rank" class="d-inline text-center">
+                    <p class="mb-0">Water</p>
+                    <img class="img-fluid resize-img2" src="images/water.svg" alt="">
+                    <p class="mb-0" id="water-clicks">0</p>
+                  </div>
+                </div> 
+              </div>
+
             </div>
               </div>
             </div>
